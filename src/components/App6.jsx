@@ -39,7 +39,7 @@ export default function App6() {
         <ol className="App-Box">
           {products.map((value, index) => (
             <li key={index}>
-              {value.name}|{value.price}|{value.qty}|{value.price * value.qty}
+              {value.name}|{value.price}|{value.qty}|{value.price * value.qty}-<button>Delete</button>
             </li>
           ))}
         </ol>
