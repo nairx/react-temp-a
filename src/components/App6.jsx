@@ -1,10 +1,13 @@
 import { useState } from "react";
-import "./App6.css"
+import "./App6.css";
 export default function App6() {
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState({});
   const handleSubmit = () => {
     setProducts([...products, product]);
+  };
+  const handleDelete = (name) => {
+    setProducts(products.filter((value) => value.name != name));
   };
   return (
     <div>
@@ -39,7 +42,8 @@ export default function App6() {
         <ol className="App-Box">
           {products.map((value, index) => (
             <li key={index}>
-              {value.name}|{value.price}|{value.qty}|{value.price * value.qty}-<button>Delete</button>
+              {value.name}|{value.price}|{value.qty}|{value.price * value.qty}-
+              <button onClick={() => handleDelete(value.name)}>Delete</button>
             </li>
           ))}
         </ol>
