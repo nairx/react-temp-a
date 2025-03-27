@@ -1,10 +1,16 @@
 import React from "react";
-import { useState, useEffect,useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 export default function App10() {
   const [num, setNum] = useState(0);
-  const numRef = useRef()
+  const divRef = useRef();
+  const numRef = useRef(0);
   useEffect(() => {
-    //some code
+    if (numRef.current > num) {
+      divRef.current.style.color = "red";
+    } else {
+      divRef.current.style.color = "green";
+    }
+    numRef.current = num;
   }, [num]);
   return (
     <div>
@@ -12,7 +18,7 @@ export default function App10() {
       <p>
         <input type="number" onChange={(e) => setNum(e.target.value)}></input>
       </p>
-      <p ref={numRef}>{num}</p>
+      <div ref={divRef}>{numRef.current}-{num}</div>
     </div>
   );
 }
